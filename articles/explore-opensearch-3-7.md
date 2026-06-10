@@ -1,5 +1,5 @@
 ---
-title: "[翻訳] OpenSearch 3.7 の新機能"
+title: "[翻訳] OpenSearch 3.7 リリース紹介"
 emoji: "🔍"
 type: "tech"
 topics: ["opensearch", "observability", "prometheus", "vectorsearch", "security"]
