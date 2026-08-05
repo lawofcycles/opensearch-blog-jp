@@ -1,5 +1,5 @@
 ---
-title: "[翻訳] OpenSearch 3.8 の新機能"
+title: "[翻訳] OpenSearch 3.8 リリース: ベクトル高速化・MCP 拡張・ログ分析の強化"
 emoji: "🔍"
 type: "tech"
 topics: ["opensearch", "vectorsearch", "observability", "ai", "search"]
