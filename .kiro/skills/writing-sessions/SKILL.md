@@ -103,4 +103,4 @@ session.py が `work/{slug}/` に以下を生成:
 scripts/publish.py 実行後:
 - `articles/{slug}.md` と `images/{slug}/` が `main` にコミット・push される
 - Zenn が `main` からデプロイし https://zenn.dev/opensearch/articles/{slug} で公開
-- 公開確認後、`python scripts/publish.py --slug {slug} --cleanup` で記事ファイルと画像を main から削除する（Zenn 上はライブのまま残る）
+- **公開済みの記事・画像は main に残す。削除しない**（Zenn はデプロイ対象ブランチからファイルが消えると、そのライブ記事の画像も削除する）

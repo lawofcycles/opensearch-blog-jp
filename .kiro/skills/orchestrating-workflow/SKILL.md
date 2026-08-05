@@ -11,7 +11,7 @@ description: 翻訳・セッション記事のワークフロー全体の手順�
 |---|---|---|
 | `python scripts/fetch.py -u <URL>` | HTML 取得・画像 DL | `--slug` で slug 指定可 |
 | `python scripts/check.py --slug <slug>` | 自動チェック実行 | review_checks.json に結果保存 |
-| `python scripts/publish.py --slug <slug>` | main に commit・push（Zenn デプロイ） | `--no-push` で commit のみ / `--cleanup` で公開後に削除 |
+| `python scripts/publish.py --slug <slug>` | main に commit・push（Zenn デプロイ） | `--no-push` で commit のみ |
 | `python scripts/status.py` | 作業一覧表示 | `--slug` で詳細表示 |
 
 ## Blog 翻訳フロー
@@ -85,16 +85,10 @@ python scripts/publish.py --slug <slug>
 - Code Defender の push ブロックは `lib/git.py` が自動回避する
 - PR もマージも不要
 
-### 8. 公開確認・後片付け
+### 8. 公開確認
 
 - `https://zenn.dev/opensearch/articles/{slug}` にアクセスして公開を確認
-- 公開を確認したら記事ファイルと画像を `main` から削除する:
-
-  ```bash
-  python scripts/publish.py --slug <slug> --cleanup
-  ```
-
-  削除しても Zenn 上の記事は消えない（ライブのまま残る）。これで `main` は次の記事のためにクリーンな状態に戻り、無関係な公開済み記事の再同期を防げる
+- **公開済みの記事・画像は main に残す。削除しない**（Zenn はデプロイ対象ブランチからファイルが消えると、そのライブ記事の画像も削除する）
 - (Issue を作成していれば) Issue をクローズする
 
 ## セッション記事フロー

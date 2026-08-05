@@ -40,14 +40,14 @@ orchestrator エージェントが以下のフローを自動管理:
 3. `scripts/check.py` で自動チェック
 4. reviewer sub-agent で AI レビュー
 5. (エラーあれば) fixer sub-agent で修正 → 3 に戻る
-6. `scripts/publish.py --slug <slug>` で main に直接 commit・push（Zenn が main からデプロイ）
+6. `scripts/publish.py --slug <slug>` で main に commit・push（Zenn が main からデプロイ）
 7. `https://zenn.dev/opensearch/articles/<slug>` で公開確認
-8. `scripts/publish.py --slug <slug> --cleanup` で記事ファイルと画像を main から削除（Zenn 上はライブのまま残る）
 
 ## 公開モデル
 
 - Zenn のデプロイ対象ブランチは `main`
-- `articles/` には「今追加する記事」だけを置く。公開済みの記事はファイルを削除する。削除しても Zenn 上の記事は消えない（Zenn 側で手動削除しない限りライブのまま）。これで無関係な公開済み記事の再同期を防ぐ
+- **公開済みの記事・画像は main に残し続ける。削除しない**。Zenn はデプロイ対象ブランチからファイルが消えると、そのライブ記事の画像も削除する（内容が同じ既存記事の再 push は no-op なので、残しておいても害はない）
+- 新記事は追加するだけ
 - Code Defender の push ブロックは `lib/git.py` の push が `core.hooksPath=/dev/null` で自動回避する
 
 ## Git ルール
